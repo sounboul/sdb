@@ -18,10 +18,8 @@ services:
     image: postgres:11.2
     restart: unless-stopped
     environment:
-      - POSTGRES_DB=itmo_db
-      # provide your credentials here
-      - POSTGRES_USER=itmo_user
-      - POSTGRES_PASSWORD=itmo_pass
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
     ports:
       - 15432:5432
     volumes:
