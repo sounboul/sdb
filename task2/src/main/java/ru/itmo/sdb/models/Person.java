@@ -22,9 +22,7 @@ public class Person {
 
     private Date birthDate;
 
-    @ManyToOne
-    @JoinColumn(name = "gender_id", referencedColumnName = "id")
-    private Gender gender;
+    private boolean gender;
 
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
@@ -70,11 +68,19 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public Gender getGender() {
+    public boolean getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }
