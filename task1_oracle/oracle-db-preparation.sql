@@ -1,3 +1,4 @@
+-- docker exec -it $CONTAINER_ID bash -c "source /home/oracle/.bashrc; sqlplus sys/Oradoc_db1@ORCLCDB as sysdba"
 alter session set "_ORACLE_SCRIPT"=true;
 commit;
 create user dev identified by "dev";

@@ -19,7 +19,7 @@ public class StudyGroupGeneration implements Generator<StudyGroup> {
     public StudyGroup generate() {
         final StudyGroup studyGroup = new StudyGroup();
 
-        studyGroup.setName(faker.regexify("^[A-Z][0-9]{4}$"));
+        studyGroup.setName(faker.regexify("[A-Z][0-9]{4}"));
         studyGroup.setCourse(faker.number().numberBetween(1, 5));
 
         final int startYear = faker.number().numberBetween(2000, 2021);

@@ -28,7 +28,7 @@ public class DirectionGenerator implements Generator<Direction> {
 
         direction.setName(faker.educator().course());
         direction.setStudyForm(randomHelper.randomFrom(studyForm));
-        direction.setCode(faker.regexify("^[0-9]{2}.[0-9]{2}.[0-9]{2}$"));
+        direction.setCode(faker.regexify("[0-9]{2}\\.[0-9]{2}\\.[0-9]{2}"));
 
         return direction;
     }
