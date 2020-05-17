@@ -1,0 +1,15 @@
+version: '2'
+services:
+  oracle:
+    image: store/oracle/database-enterprise:12.2.0.1
+    restart: unless-stopped
+    environment:
+      - ORACLE_SID=itmoSID
+      - ORACLE_PWD=itmo_pass
+
+    ports:
+      - 99161:1521
+        #volumes:
+      # persistent oracle database data.
+      #- /media/RAID_1/itmo_db_volume/oracle:/opt/oracle/oradata
+
