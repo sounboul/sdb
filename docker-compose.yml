@@ -56,3 +56,16 @@ services:
       # persistent oracle database data.
       #- /media/RAID_1/itmo_db_volume/oracle:/opt/oracle/oradata
 
+  mysql:
+    image: mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=itmo_db
+      # provide your credentials here
+      - MYSQL_USER=itmo_user
+      - MYSQL_PASSWORD=itmo_pass
+      - MYSQL_ROOT_PASSWORD=itmo_pass
+    ports:
+      - 13306:3306
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+

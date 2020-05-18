@@ -1,0 +1,19 @@
+version: '2'
+services:
+  mysql:
+    image: mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=itmo_db
+      # provide your credentials here
+      - MYSQL_USER=itmo_user
+      - MYSQL_PASSWORD=itmo_pass
+      - MYSQL_ROOT_PASSWORD=itmo_pass
+    ports:
+      - 13306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+
+volumes:
+  mysql_data:
