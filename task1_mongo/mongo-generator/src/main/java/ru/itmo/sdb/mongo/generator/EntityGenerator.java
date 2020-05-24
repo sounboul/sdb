@@ -1,6 +1,5 @@
-package ru.itmo.sdb.xmongo;
+package ru.itmo.sdb.mongo.generator;
 
-import com.github.javafaker.Bool;
 import com.github.javafaker.Faker;
 
 import java.lang.reflect.Constructor;

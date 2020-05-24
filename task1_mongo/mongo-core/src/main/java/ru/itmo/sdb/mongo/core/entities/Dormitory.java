@@ -1,4 +1,4 @@
-package ru.itmo.sdb.xmongo.entities;
+package ru.itmo.sdb.mongo.core.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

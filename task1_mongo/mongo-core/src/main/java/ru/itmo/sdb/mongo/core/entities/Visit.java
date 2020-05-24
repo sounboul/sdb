@@ -1,4 +1,4 @@
-package ru.itmo.sdb.xmongo.entities;
+package ru.itmo.sdb.mongo.core.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,12 +8,12 @@ import java.util.Date;
 
 @Data
 @AllArgsConstructor
-public class Penalty {
+public class Visit {
     @Id
     public Integer id;
 
     public Integer dormitory_id;
-    public String reason;
-    public Date report_date;
-    public Integer tenant_id;
+    public Date enter_date;
+    public Date exit_date;
+    public Integer person_id;
 }
