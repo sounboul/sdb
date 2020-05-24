@@ -10,11 +10,11 @@ import java.util.Date;
 @AllArgsConstructor
 public class Room {
     @Id
-    public Integer id;
+    public Long id;
 
-    public Integer bugs;
+    public Boolean bugs;
     public Integer capacity;
     public Date disinfection_date;
-    public Integer dormitory_id;
+    public Long dormitory_id;
     public String number;
 }

@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 public class Dormitory {
     @Id
-    public Integer id;
+    public Long id;
 
     public String city;
     public String address;

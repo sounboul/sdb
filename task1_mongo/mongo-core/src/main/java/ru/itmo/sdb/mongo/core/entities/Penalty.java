@@ -10,10 +10,10 @@ import java.util.Date;
 @AllArgsConstructor
 public class Penalty {
     @Id
-    public Integer id;
+    public Long id;
 
-    public Integer dormitory_id;
+    public Long dormitory_id;
     public String reason;
     public Date report_date;
-    public Integer tenant_id;
+    public Long tenant_id;
 }

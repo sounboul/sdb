@@ -10,10 +10,13 @@ import java.util.Date;
 @AllArgsConstructor
 public class Visit {
     @Id
-    public Integer id;
+    public Long id;
 
-    public Integer dormitory_id;
+    public Long dormitory_id;
     public Date enter_date;
     public Date exit_date;
-    public Integer person_id;
+
+    public String visitorFirstName;
+    public String visitorLastName;
+    public String visitorPatronymic;
 }

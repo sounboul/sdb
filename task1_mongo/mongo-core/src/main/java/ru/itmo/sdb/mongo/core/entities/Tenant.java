@@ -8,11 +8,14 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 public class Tenant {
     @Id
-    public Integer id;
+    public Long id;
 
     public Boolean privileged;
     public Integer payment_amount;
     public String payment_type;
-    public Integer person_id;
-    public Integer room_id;
+    public Long room_id;
+
+    public String firstName;
+    public String lastName;
+    public String patronymic;
 }
