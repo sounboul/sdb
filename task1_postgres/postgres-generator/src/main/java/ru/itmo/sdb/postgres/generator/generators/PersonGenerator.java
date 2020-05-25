@@ -21,7 +21,6 @@ public class PersonGenerator implements Generator<Person> {
         person.setBirthDate(new Date(faker.date().birthday(18, 75).getTime()));
         person.setPatronymic(faker.name().firstName()); // this is fine
         person.setGender(faker.bool().bool());
-        person.setCityId((long) faker.number().numberBetween(1, 10));
 
         return person;
     }
