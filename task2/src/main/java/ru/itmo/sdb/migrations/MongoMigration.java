@@ -140,11 +140,6 @@ public class MongoMigration {
     }
 
     private <T extends Identifiable> MigrationMeta<T> save(Iterable<T> data, Class<T> dataClass) {
-        final Iterable<T> savedData = repositoryHelper.get(dataClass).saveAll(data);
-        final List<Long> ids = StreamSupport.stream(savedData.spliterator(), false)
-                .map(Identifiable::getId)
-                .collect(Collectors.toList());
-
-        return new MigrationMeta<T>(dataClass, ids);
+        return repositoryHelper.saveWithReport(data, dataClass);
     }
 }

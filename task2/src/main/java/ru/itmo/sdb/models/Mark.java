@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import java.sql.Date;
 
 @Entity
-public class Mark {
+public class Mark implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

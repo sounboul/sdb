@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import java.sql.Date;
 
 @Entity
-public class Teacher {
+public class Teacher implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
