@@ -29,7 +29,7 @@ public class PostgresConfiguration {
     public LocalContainerEntityManagerFactoryBean postgresEntityManager() {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(userDataSource());
+        em.setDataSource(postgresDataSource());
         em.setPackagesToScan("ru.itmo.sdb.postgres.core");
 
         HibernateJpaVendorAdapter vendorAdapter
@@ -37,7 +37,9 @@ public class PostgresConfiguration {
         em.setJpaVendorAdapter(vendorAdapter);
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        properties.put("hibernate.implicit_naming_strategy", "org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy");
+        properties.put("hibernate.physical_naming_strategy", "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy");
         em.setJpaPropertyMap(properties);
 
         return em;
@@ -45,7 +47,7 @@ public class PostgresConfiguration {
 
     @Bean
     @ConfigurationProperties(prefix = "spring.postgres.datasource")
-    public DataSource userDataSource() {
+    public DataSource postgresDataSource() {
         return DataSourceBuilder.create().build();
     }
 

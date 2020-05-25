@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.itmo.sdb.postgres.core.models.Person;
 
 @Repository
-public interface PersonRepository extends CrudRepository<Person, Long> {
+public interface PostgresPersonRepository extends CrudRepository<Person, Long> {
 }

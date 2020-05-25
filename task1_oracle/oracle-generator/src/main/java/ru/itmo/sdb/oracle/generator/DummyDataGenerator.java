@@ -6,45 +6,45 @@ import ru.itmo.sdb.oracle.generator.generators.DataGeneratorService;
 import ru.itmo.sdb.oracle.generator.generators.GeneratedData;
 import ru.itmo.sdb.oracle.core.models.Student;
 import ru.itmo.sdb.oracle.core.models.Teacher;
-import ru.itmo.sdb.oracle.core.repositories.DepartmentRepository;
-import ru.itmo.sdb.oracle.core.repositories.DirectionRepository;
-import ru.itmo.sdb.oracle.core.repositories.DisciplineRepository;
-import ru.itmo.sdb.oracle.core.repositories.MarkRepository;
-import ru.itmo.sdb.oracle.core.repositories.PersonRepository;
-import ru.itmo.sdb.oracle.core.repositories.SpecialtyRepository;
-import ru.itmo.sdb.oracle.core.repositories.StudentRepository;
-import ru.itmo.sdb.oracle.core.repositories.StudyGroupRepository;
-import ru.itmo.sdb.oracle.core.repositories.SubjectRepository;
-import ru.itmo.sdb.oracle.core.repositories.TeacherRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleDepartmentRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleDirectionRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleDisciplineRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleMarkRepository;
+import ru.itmo.sdb.oracle.core.repositories.OraclePersonRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleSpecialtyRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleStudentRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleStudyGroupRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleSubjectRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleTeacherRepository;
 
 import java.util.stream.Collectors;
 
 @Service
 public class DummyDataGenerator {
     private final DataGeneratorService dataGeneratorService;
-    private final DepartmentRepository departmentRepository;
-    private final DirectionRepository directionRepository;
-    private final MarkRepository markRepository;
-    private final StudentRepository studentRepository;
-    private final StudyGroupRepository studyGroupRepository;
-    private final SubjectRepository subjectRepository;
-    private final TeacherRepository teacherRepository;
-    private final DisciplineRepository disciplineRepository;
-    private final SpecialtyRepository specialtyRepository;
-    private final PersonRepository personRepository;
+    private final OracleDepartmentRepository departmentRepository;
+    private final OracleDirectionRepository directionRepository;
+    private final OracleMarkRepository markRepository;
+    private final OracleStudentRepository studentRepository;
+    private final OracleStudyGroupRepository studyGroupRepository;
+    private final OracleSubjectRepository subjectRepository;
+    private final OracleTeacherRepository teacherRepository;
+    private final OracleDisciplineRepository disciplineRepository;
+    private final OracleSpecialtyRepository specialtyRepository;
+    private final OraclePersonRepository personRepository;
 
     @Autowired
     public DummyDataGenerator(DataGeneratorService dataGeneratorService,
-                              DepartmentRepository departmentRepository,
-                              DirectionRepository directionRepository,
-                              MarkRepository markRepository,
-                              StudentRepository studentRepository,
-                              StudyGroupRepository studyGroupRepository,
-                              SubjectRepository subjectRepository,
-                              TeacherRepository teacherRepository,
-                              DisciplineRepository disciplineRepository,
-                              SpecialtyRepository specialtyRepository,
-                              PersonRepository personRepository) {
+                              OracleDepartmentRepository departmentRepository,
+                              OracleDirectionRepository directionRepository,
+                              OracleMarkRepository markRepository,
+                              OracleStudentRepository studentRepository,
+                              OracleStudyGroupRepository studyGroupRepository,
+                              OracleSubjectRepository subjectRepository,
+                              OracleTeacherRepository teacherRepository,
+                              OracleDisciplineRepository disciplineRepository,
+                              OracleSpecialtyRepository specialtyRepository,
+                              OraclePersonRepository personRepository) {
         this.dataGeneratorService = dataGeneratorService;
         this.departmentRepository = departmentRepository;
         this.directionRepository = directionRepository;
@@ -59,7 +59,7 @@ public class DummyDataGenerator {
     }
 
     public void generateAndSave() {
-        final GeneratedData data = dataGeneratorService.generate(5);
+        final GeneratedData data = dataGeneratorService.generate(3);
 
         System.out.println("Departments: " + data.getDepartments().size());
         System.out.println("Teachers: " + data.getTeachers().size());

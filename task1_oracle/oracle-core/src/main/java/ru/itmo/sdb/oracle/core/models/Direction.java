@@ -1,5 +1,6 @@
 package ru.itmo.sdb.oracle.core.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

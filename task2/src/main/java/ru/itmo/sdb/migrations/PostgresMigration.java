@@ -13,6 +13,13 @@ import ru.itmo.sdb.models.StudyGroup;
 import ru.itmo.sdb.models.Subject;
 import ru.itmo.sdb.models.Teacher;
 import ru.itmo.sdb.models.University;
+import ru.itmo.sdb.postgres.core.repositories.PostgresDisciplineRepository;
+import ru.itmo.sdb.postgres.core.repositories.PostgresPersonRepository;
+import ru.itmo.sdb.postgres.core.repositories.PostgresSpecialtyRepository;
+import ru.itmo.sdb.postgres.core.repositories.PostgresStudentRepository;
+import ru.itmo.sdb.postgres.core.repositories.PostgresSubjectRepository;
+import ru.itmo.sdb.postgres.core.repositories.PostgresTeacherRepository;
+import ru.itmo.sdb.postgres.core.repositories.PostgresUniversityRepository;
 import ru.itmo.sdb.repositories.StoreRepositoryHelper;
 
 import java.util.ArrayList;
@@ -23,25 +30,25 @@ import java.util.Map;
 
 @Service
 public class PostgresMigration {
-    private ru.itmo.sdb.postgres.core.repositories.StudentRepository postgresStudentRepository;
-    private ru.itmo.sdb.postgres.core.repositories.SubjectRepository postgresSubjectRepository;
-    private ru.itmo.sdb.postgres.core.repositories.TeacherRepository postgresTeacherRepository;
-    private ru.itmo.sdb.postgres.core.repositories.DisciplineRepository postgresDisciplineRepository;
-    private ru.itmo.sdb.postgres.core.repositories.SpecialtyRepository postgresSpecialtyRepository;
-    private ru.itmo.sdb.postgres.core.repositories.PersonRepository postgresPersonRepository;
-    private ru.itmo.sdb.postgres.core.repositories.UniversityRepository postgresUniversityRepository;
+    private PostgresStudentRepository postgresStudentRepository;
+    private PostgresSubjectRepository postgresSubjectRepository;
+    private PostgresTeacherRepository postgresTeacherRepository;
+    private PostgresDisciplineRepository postgresDisciplineRepository;
+    private PostgresSpecialtyRepository postgresSpecialtyRepository;
+    private PostgresPersonRepository postgresPersonRepository;
+    private PostgresUniversityRepository postgresUniversityRepository;
 
     private StoreRepositoryHelper repositoryHelper;
 
     @Autowired
     public PostgresMigration(
-            ru.itmo.sdb.postgres.core.repositories.StudentRepository studentRepository,
-            ru.itmo.sdb.postgres.core.repositories.SubjectRepository subjectRepository,
-            ru.itmo.sdb.postgres.core.repositories.TeacherRepository teacherRepository,
-            ru.itmo.sdb.postgres.core.repositories.DisciplineRepository disciplineRepository,
-            ru.itmo.sdb.postgres.core.repositories.SpecialtyRepository specialtyRepository,
-            ru.itmo.sdb.postgres.core.repositories.PersonRepository personRepository,
-            ru.itmo.sdb.postgres.core.repositories.UniversityRepository universityRepository,
+            PostgresStudentRepository studentRepository,
+            PostgresSubjectRepository subjectRepository,
+            PostgresTeacherRepository teacherRepository,
+            PostgresDisciplineRepository disciplineRepository,
+            PostgresSpecialtyRepository specialtyRepository,
+            PostgresPersonRepository personRepository,
+            PostgresUniversityRepository universityRepository,
             StoreRepositoryHelper repositoryHelper) {
         this.postgresStudentRepository = studentRepository;
         this.postgresSubjectRepository = subjectRepository;

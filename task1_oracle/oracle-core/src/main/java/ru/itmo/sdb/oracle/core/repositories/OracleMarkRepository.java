@@ -2,8 +2,8 @@ package ru.itmo.sdb.oracle.core.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.itmo.sdb.oracle.core.models.Student;
+import ru.itmo.sdb.oracle.core.models.Mark;
 
 @Repository
-public interface StudentRepository extends CrudRepository<Student, Long> {
+public interface OracleMarkRepository extends CrudRepository<Mark, Long> {
 }

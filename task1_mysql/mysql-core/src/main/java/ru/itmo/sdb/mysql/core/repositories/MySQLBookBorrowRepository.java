@@ -2,8 +2,9 @@ package ru.itmo.sdb.mysql.core.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.itmo.sdb.mysql.core.models.ReportEntity;
+import ru.itmo.sdb.mysql.core.models.BookBorrowEntity;
+
 
 @Repository
-public interface ReportRepository extends CrudRepository<ReportEntity, Long> {
+public interface MySQLBookBorrowRepository extends CrudRepository<BookBorrowEntity, Long> {
 }

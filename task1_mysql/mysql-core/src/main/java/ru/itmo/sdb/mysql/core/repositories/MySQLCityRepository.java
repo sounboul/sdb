@@ -2,7 +2,8 @@ package ru.itmo.sdb.mysql.core.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.itmo.sdb.mysql.core.models.PersonEntity;
+import ru.itmo.sdb.mysql.core.models.CityEntity;
 
 @Repository
-public interface PersonRepository extends CrudRepository<PersonEntity, Long> {}
+public interface MySQLCityRepository extends CrudRepository<CityEntity, Long> {
+}

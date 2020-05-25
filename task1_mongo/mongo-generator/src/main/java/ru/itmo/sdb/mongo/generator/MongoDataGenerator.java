@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import ru.itmo.sdb.mongo.core.entities.Dormitory;
 import ru.itmo.sdb.mongo.core.entities.Penalty;
 import ru.itmo.sdb.mongo.core.entities.Room;
@@ -26,6 +27,7 @@ import java.util.stream.IntStream;
 
 @SuppressWarnings("ALL")
 @SpringBootApplication
+@EnableMongoRepositories(basePackages = "ru.itmo.sdb.mongo.core")
 public class MongoDataGenerator implements CommandLineRunner {
 
     @Autowired
@@ -64,11 +66,11 @@ public class MongoDataGenerator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        final List<Dormitory> dormitories = IntStream.rangeClosed(1, 10).boxed()
+        final List<Dormitory> dormitories = IntStream.rangeClosed(1, 3).boxed()
                 .map(x -> dormitoryGenerator.generate()).collect(Collectors.toList());
 
         final List<Room> rooms = dormitories.stream()
-                .flatMap(x -> IntStream.rangeClosed(1, 50).boxed().map(i -> roomGenerator.generate(x)))
+                .flatMap(x -> IntStream.rangeClosed(1, 5).boxed().map(i -> roomGenerator.generate(x)))
                 .collect(Collectors.toList());
 
         final List<Tenant> tenants = rooms.stream()
@@ -76,7 +78,7 @@ public class MongoDataGenerator implements CommandLineRunner {
                 .collect(Collectors.toList());
 
         final List<Visit> visits = dormitories.stream()
-                .flatMap(x -> IntStream.rangeClosed(1, 50).boxed().map(i -> visitGenerator.generate(x)))
+                .flatMap(x -> IntStream.rangeClosed(1, 10).boxed().map(i -> visitGenerator.generate(x)))
                 .collect(Collectors.toList());
 
         final List<Penalty> penalties = dormitories.stream()

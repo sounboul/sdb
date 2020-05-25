@@ -2,8 +2,8 @@ package ru.itmo.sdb.oracle.core.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.itmo.sdb.oracle.core.models.Direction;
+import ru.itmo.sdb.oracle.core.models.Specialty;
 
 @Repository
-public interface DirectionRepository extends CrudRepository<Direction, Long> {
+public interface OracleSpecialtyRepository extends CrudRepository<Specialty, Long> {
 }

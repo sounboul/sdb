@@ -1,5 +1,6 @@
 package ru.itmo.sdb;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,6 +20,15 @@ public class Migration implements CommandLineRunner {
     private OracleMigration oracleMigration;
     private PostgresMigration postgresMigration;
     private MySQLMigration mySQLMigration;
+
+    @Autowired
+    public Migration(MongoMigration mongoMigration, OracleMigration oracleMigration,
+                     PostgresMigration postgresMigration, MySQLMigration mySQLMigration) {
+        this.mongoMigration = mongoMigration;
+        this.oracleMigration = oracleMigration;
+        this.postgresMigration = postgresMigration;
+        this.mySQLMigration = mySQLMigration;
+    }
 
     @Override
     public void run(String... args) throws Exception {

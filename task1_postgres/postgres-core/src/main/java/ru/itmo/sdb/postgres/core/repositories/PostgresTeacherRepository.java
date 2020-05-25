@@ -2,8 +2,8 @@ package ru.itmo.sdb.postgres.core.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.itmo.sdb.postgres.core.models.Subject;
+import ru.itmo.sdb.postgres.core.models.Teacher;
 
 @Repository
-public interface SubjectRepository extends CrudRepository<Subject, Long> {
+public interface PostgresTeacherRepository extends CrudRepository<Teacher, Long> {
 }

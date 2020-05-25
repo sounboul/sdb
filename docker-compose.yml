@@ -1,5 +1,13 @@
 version: '2'
 services:
+  final:
+    image: store/oracle/database-enterprise:12.2.0.1
+    restart: unless-stopped
+    ports:
+      - 59161:1521
+      - 18080:8080
+      - 15500:5500
+
   mongo:
     image: mongo:4.0.9-xenial
     command: mongod
@@ -11,8 +19,6 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=itmo_pass
     ports:
       - 27017:27017
-    volumes:
-      - /media/RAID_1/itmo_db_volume/mongo:/data/db
 
   postgres:
     image: postgres:11.2
@@ -22,24 +28,6 @@ services:
       - POSTGRES_PASSWORD=dev
     ports:
       - 15432:5432
-    volumes:
-      - /media/RAID_1/itmo_db_volume/postgres:/var/lib/postgresql/data
-
-  mysql:
-    image: mariadb:10.3.15-bionic
-    restart: unless-stopped
-    environment:
-      - MYSQL_DATABASE=itmo_db
-      # provide your credentials here
-      - MYSQL_USER=itmo_user
-      - MYSQL_PASSWORD=itmo_pass
-      - MYSQL_ROOT_PASSWORD=itmo_pass
-    ports:
-      - 13306:3306
-    volumes:
-      - /media/RAID_1/itmo_db_volume/mysql:/var/lib/mysql
-    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
-
 
   oracle:
     image: store/oracle/database-enterprise:12.2.0.1
@@ -52,9 +40,6 @@ services:
       - 49161:1521
       - 8080:8080
       - 5500:5500
-        #volumes:
-      # persistent oracle database data.
-      #- /media/RAID_1/itmo_db_volume/oracle:/opt/oracle/oradata
 
   mysql:
     image: mysql

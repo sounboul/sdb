@@ -8,28 +8,28 @@ import ru.itmo.sdb.mysql.generator.generators.GeneratedData;
 @Service
 public class DummyDataGenerator {
     private final DataGeneratorService dataGeneratorService;
-    private final BookRepository bookRepository;
-    private final BookBorrowRepository bookBorrowRepository;
-    private final CityRepository cityRepository;
-    private final ConferenceRepository conferenceRepository;
-    private final EditionRepository editionRepository;
-    private final PersonRepository personRepository;
-    private final ProjectRepository projectRepository;
-    private final ProjectParticipantRepository projectParticipantRepository;
-    private final PublicationRepository publicationRepository;
-    private final ReportRepository reportRepository;
-    private final ReportAuthorRepository reportAuthorRepository;
+    private final MySQLBookRepository bookRepository;
+    private final MySQLBookBorrowRepository bookBorrowRepository;
+    private final MySQLCityRepository cityRepository;
+    private final MySQLConferenceRepository conferenceRepository;
+    private final MySQLEditionRepository editionRepository;
+    private final MySQLPersonRepository personRepository;
+    private final MySQLProjectRepository projectRepository;
+    private final MySQLProjectParticipantRepository projectParticipantRepository;
+    private final MySQLPublicationRepository publicationRepository;
+    private final MySQLReportRepository reportRepository;
+    private final MySQLReportAuthorRepository reportAuthorRepository;
 
-    public DummyDataGenerator(DataGeneratorService dataGeneratorService, BookRepository bookRepository,
-                              BookBorrowRepository bookBorrowRepository,
-                              CityRepository cityRepository,
-                              ConferenceRepository conferenceRepository, EditionRepository editionRepository,
-                              PersonRepository personRepository,
-                              ProjectRepository projectRepository,
-                              ProjectParticipantRepository projectParticipantRepository,
-                              PublicationRepository publicationRepository,
-                              ReportRepository reportRepository,
-                              ReportAuthorRepository reportAuthorRepository) {
+    public DummyDataGenerator(DataGeneratorService dataGeneratorService, MySQLBookRepository bookRepository,
+                              MySQLBookBorrowRepository bookBorrowRepository,
+                              MySQLCityRepository cityRepository,
+                              MySQLConferenceRepository conferenceRepository, MySQLEditionRepository editionRepository,
+                              MySQLPersonRepository personRepository,
+                              MySQLProjectRepository projectRepository,
+                              MySQLProjectParticipantRepository projectParticipantRepository,
+                              MySQLPublicationRepository publicationRepository,
+                              MySQLReportRepository reportRepository,
+                              MySQLReportAuthorRepository reportAuthorRepository) {
         this.dataGeneratorService = dataGeneratorService;
         this.bookRepository = bookRepository;
         this.bookBorrowRepository = bookBorrowRepository;

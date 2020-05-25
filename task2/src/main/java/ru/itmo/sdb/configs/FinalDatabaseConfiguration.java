@@ -3,6 +3,8 @@ package ru.itmo.sdb.configs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy;
+import org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -29,23 +31,29 @@ public class FinalDatabaseConfiguration {
     public LocalContainerEntityManagerFactoryBean finalDatabaseEntityManager() {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(userDataSource());
+        em.setDataSource(finalDatabaseDataSource());
         em.setPackagesToScan("ru.itmo.sdb.models");
 
         HibernateJpaVendorAdapter vendorAdapter
                 = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         HashMap<String, Object> properties = new HashMap<>();
-        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.put("hibernate.show-sql", true);
+        properties.put("hibernate.ddl-auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.jdbc.batch_size", 4);
+        properties.put("hibernate.order_inserts", true);
+        properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle12cDialect");
+        properties.put("hibernate.physical_naming_strategy", SpringPhysicalNamingStrategy.class.getName());
+        properties.put("hibernate.implicit_naming_strategy", SpringImplicitNamingStrategy.class.getName());
         em.setJpaPropertyMap(properties);
 
         return em;
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.finalDatabase.datasource")
-    public DataSource userDataSource() {
+    @ConfigurationProperties(prefix = "spring.final.datasource")
+    public DataSource finalDatabaseDataSource() {
         return DataSourceBuilder.create().build();
     }
 

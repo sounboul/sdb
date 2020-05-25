@@ -7,7 +7,6 @@ import org.springframework.data.annotation.Id;
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
 public class Visit {
     @Id
     public Long id;

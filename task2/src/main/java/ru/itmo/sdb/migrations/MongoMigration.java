@@ -129,6 +129,7 @@ public class MongoMigration {
         });
 
         return new MigrationReport(Source.MONGO, Arrays.asList(
+                save(cities.values(), City.class),
                 save(dormitories.values(), Dormitory.class),
                 save(rooms.values(), Room.class),
                 save(people, Person.class),

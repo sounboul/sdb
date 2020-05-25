@@ -15,6 +15,18 @@ import ru.itmo.sdb.models.Project;
 import ru.itmo.sdb.models.ProjectParticipant;
 import ru.itmo.sdb.models.Publication;
 import ru.itmo.sdb.models.Report;
+import ru.itmo.sdb.mysql.core.repositories.MySQLBookBorrowRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLBookRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLCityRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLConferenceRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLEditionRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLPersonRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLProjectParticipantRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLProjectRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLPublicationAuthorsRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLPublicationRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLReportAuthorRepository;
+import ru.itmo.sdb.mysql.core.repositories.MySQLReportRepository;
 import ru.itmo.sdb.repositories.StoreRepositoryHelper;
 
 import java.util.Arrays;
@@ -25,36 +37,36 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class MySQLMigration {
-    private ru.itmo.sdb.mysql.core.repositories.PersonRepository mysqlPersonRepository;
-    private ru.itmo.sdb.mysql.core.repositories.CityRepository mysqlCityRepository;
-    private ru.itmo.sdb.mysql.core.repositories.BookRepository mysqlBookRepository;
-    private ru.itmo.sdb.mysql.core.repositories.BookBorrowRepository mysqlBookBorrowRepository;
-    private ru.itmo.sdb.mysql.core.repositories.ConferenceRepository mysqlConferenceRepository;
-    private ru.itmo.sdb.mysql.core.repositories.EditionRepository mysqlEditionRepository;
-    private ru.itmo.sdb.mysql.core.repositories.ProjectRepository mysqlProjectRepository;
-    private ru.itmo.sdb.mysql.core.repositories.ProjectParticipantRepository mysqlProjectParticipantRepository;
-    private ru.itmo.sdb.mysql.core.repositories.PublicationRepository mysqlPublicationRepository;
-    private ru.itmo.sdb.mysql.core.repositories.PublicationAuthorsRepository mysqlPublicationAuthorsRepository;
-    private ru.itmo.sdb.mysql.core.repositories.ReportRepository mysqlReportRepository;
-    private ru.itmo.sdb.mysql.core.repositories.ReportAuthorRepository mysqlReportAuthorRepository;
+    private MySQLPersonRepository mysqlPersonRepository;
+    private MySQLCityRepository mysqlCityRepository;
+    private MySQLBookRepository mysqlBookRepository;
+    private MySQLBookBorrowRepository mysqlBookBorrowRepository;
+    private MySQLConferenceRepository mysqlConferenceRepository;
+    private MySQLEditionRepository mysqlEditionRepository;
+    private MySQLProjectRepository mysqlProjectRepository;
+    private MySQLProjectParticipantRepository mysqlProjectParticipantRepository;
+    private MySQLPublicationRepository mysqlPublicationRepository;
+    private MySQLPublicationAuthorsRepository mysqlPublicationAuthorsRepository;
+    private MySQLReportRepository mysqlReportRepository;
+    private MySQLReportAuthorRepository mysqlReportAuthorRepository;
 
 
     private StoreRepositoryHelper repositoryHelper;
 
     @Autowired
     public MySQLMigration(
-            ru.itmo.sdb.mysql.core.repositories.PersonRepository personRepository,
-            ru.itmo.sdb.mysql.core.repositories.CityRepository mysqlCityRepository,
-            ru.itmo.sdb.mysql.core.repositories.BookRepository mysqlBookRepository,
-            ru.itmo.sdb.mysql.core.repositories.BookBorrowRepository mysqlBookBorrowRepository,
-            ru.itmo.sdb.mysql.core.repositories.ConferenceRepository mysqlConferenceRepository,
-            ru.itmo.sdb.mysql.core.repositories.EditionRepository mysqlEditionRepository,
-            ru.itmo.sdb.mysql.core.repositories.ProjectRepository mysqlProjectRepository,
-            ru.itmo.sdb.mysql.core.repositories.ProjectParticipantRepository mysqlProjectParticipantRepository,
-            ru.itmo.sdb.mysql.core.repositories.PublicationRepository mysqlPublicationRepository,
-            ru.itmo.sdb.mysql.core.repositories.PublicationAuthorsRepository mysqlPublicationAuthorsRepository,
-            ru.itmo.sdb.mysql.core.repositories.ReportRepository mysqlReportRepository,
-            ru.itmo.sdb.mysql.core.repositories.ReportAuthorRepository mysqlReportAuthorRepository,
+            MySQLPersonRepository personRepository,
+            MySQLCityRepository mysqlCityRepository,
+            MySQLBookRepository mysqlBookRepository,
+            MySQLBookBorrowRepository mysqlBookBorrowRepository,
+            MySQLConferenceRepository mysqlConferenceRepository,
+            MySQLEditionRepository mysqlEditionRepository,
+            MySQLProjectRepository mysqlProjectRepository,
+            MySQLProjectParticipantRepository mysqlProjectParticipantRepository,
+            MySQLPublicationRepository mysqlPublicationRepository,
+            MySQLPublicationAuthorsRepository mysqlPublicationAuthorsRepository,
+            MySQLReportRepository mysqlReportRepository,
+            MySQLReportAuthorRepository mysqlReportAuthorRepository,
             StoreRepositoryHelper repositoryHelper) {
         this.mysqlPersonRepository = personRepository;
         this.mysqlCityRepository = mysqlCityRepository;

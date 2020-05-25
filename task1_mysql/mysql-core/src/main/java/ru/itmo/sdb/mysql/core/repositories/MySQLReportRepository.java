@@ -2,8 +2,8 @@ package ru.itmo.sdb.mysql.core.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.itmo.sdb.mysql.core.models.ProjectParticipantEntity;
+import ru.itmo.sdb.mysql.core.models.ReportEntity;
 
 @Repository
-public interface ProjectParticipantRepository extends CrudRepository<ProjectParticipantEntity, Long> {
+public interface MySQLReportRepository extends CrudRepository<ReportEntity, Long> {
 }

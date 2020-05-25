@@ -3,13 +3,11 @@ package ru.itmo.sdb.migrations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.itmo.sdb.migrations.conflicts.MigrationMeta;
 import ru.itmo.sdb.migrations.conflicts.MigrationReport;
 import ru.itmo.sdb.migrations.conflicts.Source;
 import ru.itmo.sdb.models.Department;
 import ru.itmo.sdb.models.Direction;
 import ru.itmo.sdb.models.Discipline;
-import ru.itmo.sdb.models.Identifiable;
 import ru.itmo.sdb.models.Mark;
 import ru.itmo.sdb.models.Person;
 import ru.itmo.sdb.models.Specialty;
@@ -17,36 +15,46 @@ import ru.itmo.sdb.models.Student;
 import ru.itmo.sdb.models.StudyGroup;
 import ru.itmo.sdb.models.Subject;
 import ru.itmo.sdb.models.Teacher;
+import ru.itmo.sdb.oracle.core.repositories.OracleDepartmentRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleDirectionRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleDisciplineRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleMarkRepository;
+import ru.itmo.sdb.oracle.core.repositories.OraclePersonRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleSpecialtyRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleStudentRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleStudyGroupRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleSubjectRepository;
+import ru.itmo.sdb.oracle.core.repositories.OracleTeacherRepository;
 import ru.itmo.sdb.repositories.StoreRepositoryHelper;
 
 import java.util.*;
 
 @Service
 public class OracleMigration {
-    private ru.itmo.sdb.oracle.core.repositories.DepartmentRepository oracleDepartmentRepository;
-    private ru.itmo.sdb.oracle.core.repositories.DirectionRepository oracleDirectionRepository;
-    private ru.itmo.sdb.oracle.core.repositories.MarkRepository oracleMarkRepository;
-    private ru.itmo.sdb.oracle.core.repositories.StudentRepository oracleStudentRepository;
-    private ru.itmo.sdb.oracle.core.repositories.StudyGroupRepository oracleStudyGroupRepository;
-    private ru.itmo.sdb.oracle.core.repositories.SubjectRepository oracleSubjectRepository;
-    private ru.itmo.sdb.oracle.core.repositories.TeacherRepository oracleTeacherRepository;
-    private ru.itmo.sdb.oracle.core.repositories.DisciplineRepository oracleDisciplineRepository;
-    private ru.itmo.sdb.oracle.core.repositories.SpecialtyRepository oracleSpecialtyRepository;
-    private ru.itmo.sdb.oracle.core.repositories.PersonRepository oraclePersonRepository;
+    private OracleDepartmentRepository oracleDepartmentRepository;
+    private OracleDirectionRepository oracleDirectionRepository;
+    private OracleMarkRepository oracleMarkRepository;
+    private OracleStudentRepository oracleStudentRepository;
+    private OracleStudyGroupRepository oracleStudyGroupRepository;
+    private OracleSubjectRepository oracleSubjectRepository;
+    private OracleTeacherRepository oracleTeacherRepository;
+    private OracleDisciplineRepository oracleDisciplineRepository;
+    private OracleSpecialtyRepository oracleSpecialtyRepository;
+    private OraclePersonRepository oraclePersonRepository;
 
     private StoreRepositoryHelper repositoryHelper;
 
     @Autowired
-    public OracleMigration(ru.itmo.sdb.oracle.core.repositories.DepartmentRepository departmentRepository,
-                           ru.itmo.sdb.oracle.core.repositories.DirectionRepository directionRepository,
-                           ru.itmo.sdb.oracle.core.repositories.MarkRepository markRepository,
-                           ru.itmo.sdb.oracle.core.repositories.StudentRepository studentRepository,
-                           ru.itmo.sdb.oracle.core.repositories.StudyGroupRepository studyGroupRepository,
-                           ru.itmo.sdb.oracle.core.repositories.SubjectRepository subjectRepository,
-                           ru.itmo.sdb.oracle.core.repositories.TeacherRepository teacherRepository,
-                           ru.itmo.sdb.oracle.core.repositories.DisciplineRepository disciplineRepository,
-                           ru.itmo.sdb.oracle.core.repositories.SpecialtyRepository specialtyRepository,
-                           ru.itmo.sdb.oracle.core.repositories.PersonRepository personRepository,
+    public OracleMigration(OracleDepartmentRepository departmentRepository,
+                           OracleDirectionRepository directionRepository,
+                           OracleMarkRepository markRepository,
+                           OracleStudentRepository studentRepository,
+                           OracleStudyGroupRepository studyGroupRepository,
+                           OracleSubjectRepository subjectRepository,
+                           OracleTeacherRepository teacherRepository,
+                           OracleDisciplineRepository disciplineRepository,
+                           OracleSpecialtyRepository specialtyRepository,
+                           OraclePersonRepository personRepository,
                            StoreRepositoryHelper repositoryHelper) {
         this.oracleDepartmentRepository = departmentRepository;
         this.oracleDirectionRepository = directionRepository;

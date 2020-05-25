@@ -12,24 +12,24 @@ import java.util.stream.Collectors;
 @Service
 public class DummyDataGenerator {
     private final DataGeneratorService dataGeneratorService;
-    private final StudentRepository studentRepository;
-    private final SubjectRepository subjectRepository;
-    private final TeacherRepository teacherRepository;
-    private final DisciplineRepository disciplineRepository;
-    private final SpecialtyRepository specialtyRepository;
-    private final PersonRepository personRepository;
-    private final UniversityRepository universityRepository;
+    private final PostgresStudentRepository studentRepository;
+    private final PostgresSubjectRepository subjectRepository;
+    private final PostgresTeacherRepository teacherRepository;
+    private final PostgresDisciplineRepository disciplineRepository;
+    private final PostgresSpecialtyRepository specialtyRepository;
+    private final PostgresPersonRepository personRepository;
+    private final PostgresUniversityRepository universityRepository;
 
     @Autowired
     public DummyDataGenerator(
             DataGeneratorService dataGeneratorService,
-            StudentRepository studentRepository,
-            SubjectRepository subjectRepository,
-            TeacherRepository teacherRepository,
-            DisciplineRepository disciplineRepository,
-            SpecialtyRepository specialtyRepository,
-            PersonRepository personRepository,
-            UniversityRepository universityRepository) {
+            PostgresStudentRepository studentRepository,
+            PostgresSubjectRepository subjectRepository,
+            PostgresTeacherRepository teacherRepository,
+            PostgresDisciplineRepository disciplineRepository,
+            PostgresSpecialtyRepository specialtyRepository,
+            PostgresPersonRepository personRepository,
+            PostgresUniversityRepository universityRepository) {
         this.dataGeneratorService = dataGeneratorService;
         this.studentRepository = studentRepository;
         this.subjectRepository = subjectRepository;
@@ -41,7 +41,7 @@ public class DummyDataGenerator {
     }
 
     public void generateAndSave() {
-        final GeneratedData data = dataGeneratorService.generate(5);
+        final GeneratedData data = dataGeneratorService.generate(3);
 
         System.out.println("Teachers: " + data.getTeachers().size());
         System.out.println("Students: " + data.getStudents().size());

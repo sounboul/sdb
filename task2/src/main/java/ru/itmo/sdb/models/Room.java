@@ -1,5 +1,6 @@
 package ru.itmo.sdb.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Room implements Identifiable {
     @JoinColumn(name = "dormitory_id", referencedColumnName = "id")
     private Dormitory dormitory;
 
+    @Column(name = "roomNumber")
     private int number;
 
     private int capacity;
