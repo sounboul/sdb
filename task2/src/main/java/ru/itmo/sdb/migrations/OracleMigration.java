@@ -3,8 +3,8 @@ package ru.itmo.sdb.migrations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.itmo.sdb.migrations.conflicts.MigrationReport;
-import ru.itmo.sdb.migrations.conflicts.Source;
+import ru.itmo.sdb.migrations.conflicts.meta.MigrationReport;
+import ru.itmo.sdb.migrations.conflicts.meta.Source;
 import ru.itmo.sdb.models.Department;
 import ru.itmo.sdb.models.Direction;
 import ru.itmo.sdb.models.Discipline;

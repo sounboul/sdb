@@ -3,7 +3,7 @@ package ru.itmo.sdb.repositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
-import ru.itmo.sdb.migrations.conflicts.MigrationMeta;
+import ru.itmo.sdb.migrations.conflicts.meta.MigrationMeta;
 import ru.itmo.sdb.models.Admonition;
 import ru.itmo.sdb.models.Book;
 import ru.itmo.sdb.models.BookBorrow;
