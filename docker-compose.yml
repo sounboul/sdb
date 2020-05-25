@@ -1,7 +1,7 @@
 version: '2'
 services:
   final:
-    image: store/oracle/database-enterprise:12.2.0.1
+    image: absolutapps/oracle-12c-ee
     restart: unless-stopped
     ports:
       - 59161:1521
