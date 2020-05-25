@@ -9,6 +9,8 @@ import ru.itmo.sdb.migrations.MongoMigration;
 import ru.itmo.sdb.migrations.MySQLMigration;
 import ru.itmo.sdb.migrations.OracleMigration;
 import ru.itmo.sdb.migrations.PostgresMigration;
+import ru.itmo.sdb.migrations.TechGenerator;
+import ru.itmo.sdb.migrations.conflicts.CitiesResolver;
 
 @SpringBootApplication
 public class Migration implements CommandLineRunner {
@@ -20,6 +22,8 @@ public class Migration implements CommandLineRunner {
     private OracleMigration oracleMigration;
     private PostgresMigration postgresMigration;
     private MySQLMigration mySQLMigration;
+    private CitiesResolver citiesResolver;
+    private TechGenerator techGenerator;
 
     @Autowired
     public Migration(MongoMigration mongoMigration, OracleMigration oracleMigration,
@@ -36,5 +40,7 @@ public class Migration implements CommandLineRunner {
         oracleMigration.migrate();
         postgresMigration.migrate();
         mySQLMigration.migrate();
+        citiesResolver.resolveConflicts(null);
+        techGenerator.generate();
     }
 }
