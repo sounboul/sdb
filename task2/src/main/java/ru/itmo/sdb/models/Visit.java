@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import java.sql.Date;
 
 @Entity
-public class Visit {
+public class Visit implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

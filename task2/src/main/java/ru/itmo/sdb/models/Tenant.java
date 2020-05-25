@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import java.sql.Date;
 
 @Entity
-public class Tenant {
+public class Tenant implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,8 +21,6 @@ public class Tenant {
     @ManyToOne
     @JoinColumn(name = "room_id", referencedColumnName = "id")
     private Room room;
-
-    private boolean hasExemption;
 
     private String paymentType;
 
@@ -50,14 +48,6 @@ public class Tenant {
 
     public void setRoom(Room room) {
         this.room = room;
-    }
-
-    public boolean isHasExemption() {
-        return hasExemption;
-    }
-
-    public void setHasExemption(boolean hasExemption) {
-        this.hasExemption = hasExemption;
     }
 
     public String getPaymentType() {

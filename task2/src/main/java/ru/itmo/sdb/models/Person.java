@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import java.sql.Date;
 
 @Entity
-public class Person {
+public class Person implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +22,7 @@ public class Person {
 
     private Date birthDate;
 
-    private boolean gender;
+    private Boolean gender;
 
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
@@ -68,11 +68,11 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public boolean getGender() {
+    public Boolean getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(Boolean gender) {
         this.gender = gender;
     }
 
