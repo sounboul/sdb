@@ -1,4 +1,4 @@
-package ru.itmo.sdb.migrations;
+package ru.itmo.sdb.migrations.conflicts;
 
 import java.util.List;
 

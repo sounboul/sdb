@@ -2,6 +2,9 @@ package ru.itmo.sdb.migrations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.itmo.sdb.migrations.conflicts.MigrationMeta;
+import ru.itmo.sdb.migrations.conflicts.MigrationReport;
+import ru.itmo.sdb.migrations.conflicts.Source;
 import ru.itmo.sdb.models.Admonition;
 import ru.itmo.sdb.models.City;
 import ru.itmo.sdb.models.Dormitory;
