@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import java.sql.Date;
 
 @Entity
-public class BookBorrow {
+public class BookBorrow implements Identifiable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

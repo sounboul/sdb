@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.itmo.sdb.models.MigrationDuplicateRecord;
 
 @Repository
-public interface MigrationDuplicatesRecordRepository extends CrudRepository<MigrationDuplicateRecord, Long> {
+public interface MigrationDuplicateRecordRepository extends CrudRepository<MigrationDuplicateRecord, Long> {
 }

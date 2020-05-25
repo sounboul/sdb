@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import java.sql.Date;
 
 @Entity
-public class ProjectParticipant {
+public class ProjectParticipant implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

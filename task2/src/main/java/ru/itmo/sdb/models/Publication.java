@@ -12,7 +12,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-public class Publication {
+public class Publication implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
