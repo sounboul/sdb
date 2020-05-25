@@ -22,6 +22,8 @@ public class Person {
 
     private boolean gender;
 
+    private Long cityId;
+
     public Long getId() {
         return id;
     }
@@ -68,5 +70,13 @@ public class Person {
 
     public void setGender(boolean gender) {
         this.gender = gender;
+    }
+
+    public Long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 }
