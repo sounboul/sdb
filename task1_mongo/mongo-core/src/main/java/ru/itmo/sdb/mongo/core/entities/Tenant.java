@@ -10,7 +10,6 @@ public class Tenant {
     @Id
     public Long id;
 
-    public Boolean privileged;
     public Integer payment_amount;
     public String payment_type;
     public Long room_id;

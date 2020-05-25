@@ -30,7 +30,6 @@ public class TenantGenerator {
         tenant.firstName = faker.name().firstName();
         tenant.lastName = faker.name().lastName();
         tenant.patronymic = faker.name().firstName();
-        tenant.privileged = faker.bool().bool();
         tenant.room_id = room.id;
 
         return tenant;
