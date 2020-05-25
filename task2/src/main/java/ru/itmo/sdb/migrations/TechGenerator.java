@@ -12,7 +12,7 @@ public class TechGenerator {
 
     public void generate() {
         for (int year = 1920; year < 2030; year++) {
-            for (int term = 1; term < 2; term++) {
+            for (int term = 1; term <= 2; term++) {
                 XTime xTime = new XTime();
 
                 xTime.setYear(year);
