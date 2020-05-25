@@ -78,7 +78,7 @@ public class MongoMigration {
             room.setCapacity(x.capacity);
             room.setBugs(x.bugs);
             room.setDisinfectionDate(new Date(x.disinfection_date.getTime()));
-            room.setDormitory(dormitories.get(x.id));
+            room.setDormitory(dormitories.get(x.dormitory_id));
             rooms.put(x.id, room);
         });
 
