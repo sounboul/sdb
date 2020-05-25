@@ -89,6 +89,14 @@ public class MongoMigration {
             person.setLastName(x.lastName);
             person.setPatronymic(x.patronymic);
 
+            Room room = rooms.get(x.room_id);
+            if (room != null) {
+                Dormitory dorm = room.getDormitory();
+                if (dorm != null) {
+                    person.setCity(dorm.getCity());
+                }
+            }
+
             final Tenant tenant = new Tenant();
             tenant.setPaymentAmount(x.payment_amount);
             tenant.setPerson(person);

@@ -84,6 +84,15 @@ public class MySQLMigration {
     }
 
     public MigrationReport migrate() {
+        Map<Long, City> cities = new HashMap<>();
+        mysqlCityRepository.findAll()
+                .forEach(x -> {
+                    City city = new City();
+                    city.setName(x.getName());
+
+                    cities.put(x.getId(), city);
+                });
+
         Map<Long, Person> people = new HashMap<>();
         mysqlPersonRepository.findAll()
                 .forEach(x -> {
@@ -92,16 +101,9 @@ public class MySQLMigration {
                     person.setFirstName(x.getFirstName());
                     person.setLastName(x.getLastName());
                     person.setPatronymic(x.getPatronymic());
+                    person.setCity(cities.get(x.getFirstName().hashCode() % cities.size())); // ha-ha
 
                     people.put(x.getId(), person);
-                });
-        Map<Long, City> cities = new HashMap<>();
-        mysqlCityRepository.findAll()
-                .forEach(x -> {
-                    City city = new City();
-                    city.setName(x.getName());
-
-                    cities.put(x.getId(), city);
                 });
 
         Map<Long, Conference> conferences = new HashMap<>();
