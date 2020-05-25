@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "ru.itmo.sdb.models",
+        basePackages = "ru.itmo.sdb.repositories",
         entityManagerFactoryRef = "finalDatabaseEntityManager",
         transactionManagerRef = "finalDatabaseTransactionManager"
 )
@@ -30,7 +30,7 @@ public class FinalDatabaseConfiguration {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(userDataSource());
-        em.setPackagesToScan("ru.itmo.sdb.finalDatabase.core");
+        em.setPackagesToScan("ru.itmo.sdb.models");
 
         HibernateJpaVendorAdapter vendorAdapter
                 = new HibernateJpaVendorAdapter();
