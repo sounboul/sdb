@@ -2,6 +2,8 @@ package ru.itmo.sdb.mysql.core.models;
 
 import javax.persistence.*;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "person", schema = "itmo_db", catalog = "")
 public class PersonEntity {
@@ -9,6 +11,7 @@ public class PersonEntity {
     private String firstName;
     private String lastName;
     private String patronymic;
+    private Date birthday;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +22,16 @@ public class PersonEntity {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "birthday", nullable = true)
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     @Basic

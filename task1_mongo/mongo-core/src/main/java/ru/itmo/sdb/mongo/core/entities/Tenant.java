@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 @Data
 public class Tenant {
     @Id
@@ -16,4 +18,6 @@ public class Tenant {
     public String firstName;
     public String lastName;
     public String patronymic;
+
+    public Date birthday;
 }

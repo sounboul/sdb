@@ -102,6 +102,7 @@ public class MySQLMigration {
                     person.setLastName(x.getLastName());
                     person.setPatronymic(x.getPatronymic());
                     person.setCity(cities.get(x.getFirstName().hashCode() % cities.size())); // ha-ha
+                    person.setBirthDate(x.getBirthday());
 
                     people.put(x.getId(), person);
                 });

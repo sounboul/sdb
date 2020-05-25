@@ -88,6 +88,7 @@ public class MongoMigration {
             person.setFirstName(x.firstName);
             person.setLastName(x.lastName);
             person.setPatronymic(x.patronymic);
+            person.setBirthDate(new Date(x.birthday.getTime()));
 
             Room room = rooms.get(x.room_id);
             if (room != null) {
