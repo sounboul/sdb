@@ -21,9 +21,11 @@ import ru.itmo.sdb.mongo.core.repositories.Visits;
 import ru.itmo.sdb.repositories.StoreRepositoryHelper;
 
 import java.sql.Date;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class MongoMigration {
@@ -51,9 +53,6 @@ public class MongoMigration {
         final Map<Long, Room> rooms = new HashMap<>();
         final List<Person> people = new ArrayList<>();
         final Map<Long, Tenant> tenants = new HashMap<>();
-
-        repositoryHelper.get(City.class)
-                .findAll().forEach(x -> cities.put(x.getName(), x));
 
         mongoDormitoryRepository.findAll().forEach(x -> {
             final Dormitory dormitory = new Dormitory();

@@ -6,4 +6,5 @@ import ru.itmo.sdb.mysql.core.models.ReportAuthorsEntity;
 
 @Repository
 public interface ReportAuthorRepository extends CrudRepository<ReportAuthorsEntity, Long> {
+    Iterable<ReportAuthorsEntity> findByReportId(long reportId);
 }

@@ -5,38 +5,38 @@ import javax.persistence.*;
 @Entity
 @Table(name = "publication_authors", schema = "itmo_db", catalog = "")
 public class PublicationAuthorsEntity {
-    private Long id;
-    private Long personId;
-    private Long publicationId;
+    private long id;
+    private long personId;
+    private long publicationId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
     @Basic
     @Column(name = "person_id", nullable = true)
-    public Long getPersonId() {
+    public long getPersonId() {
         return personId;
     }
 
-    public void setPersonId(Long personId) {
+    public void setPersonId(long personId) {
         this.personId = personId;
     }
 
     @Basic
     @Column(name = "publication_id", nullable = true)
-    public Long getPublicationId() {
+    public long getPublicationId() {
         return publicationId;
     }
 
-    public void setPublicationId(Long publicationId) {
+    public void setPublicationId(long publicationId) {
         this.publicationId = publicationId;
     }
 }
