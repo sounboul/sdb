@@ -60,7 +60,7 @@ public class MongoMigration {
             dormitory.setName(x.name);
             dormitory.setAddress(x.address);
 
-            City city = cities.get(x.name);
+            City city = cities.get(x.city);
 
             if (city == null) {
                 city = new City();

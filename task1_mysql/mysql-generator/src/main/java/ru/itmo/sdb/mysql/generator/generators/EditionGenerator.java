@@ -25,7 +25,7 @@ public class EditionGenerator implements Generator<EditionEntity> {
     public EditionEntity generate() {
         final EditionEntity edition = new EditionEntity();
 
-        edition.setCityId(faker.number().randomDigit());
+        edition.setCityId(faker.number().randomDigit() + 1);
         edition.setLanguage(languages.get(new Random().nextInt(languages.size())));
         edition.setYear(faker.date().between(
                 faker.date().past(360 * 10, TimeUnit.DAYS),

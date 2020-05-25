@@ -27,11 +27,14 @@ public class Migration implements CommandLineRunner {
 
     @Autowired
     public Migration(MongoMigration mongoMigration, OracleMigration oracleMigration,
-                     PostgresMigration postgresMigration, MySQLMigration mySQLMigration) {
+                     PostgresMigration postgresMigration, MySQLMigration mySQLMigration,
+                     CitiesResolver citiesResolver, TechGenerator techGenerator) {
         this.mongoMigration = mongoMigration;
         this.oracleMigration = oracleMigration;
         this.postgresMigration = postgresMigration;
         this.mySQLMigration = mySQLMigration;
+        this.citiesResolver = citiesResolver;
+        this.techGenerator = techGenerator;
     }
 
     @Override

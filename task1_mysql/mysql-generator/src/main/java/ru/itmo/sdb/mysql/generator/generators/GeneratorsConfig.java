@@ -12,12 +12,12 @@ import java.util.Locale;
 public class GeneratorsConfig {
     @Bean
     public FakeValuesService fakeValuesService() {
-        return new FakeValuesService(new Locale("en-EN"), randomService());
+        return new FakeValuesService(new Locale("en"), randomService());
     }
 
     @Bean
     public Faker faker() {
-        return new Faker(new Locale("en-EN"));
+        return new Faker(new Locale("en"));
     }
 
     @Bean

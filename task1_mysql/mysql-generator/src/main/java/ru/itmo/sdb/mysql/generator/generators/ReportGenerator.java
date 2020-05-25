@@ -18,7 +18,7 @@ public class ReportGenerator implements Generator<ReportEntity>{
     public ReportEntity generate() {
         final ReportEntity report = new ReportEntity();
 
-        report.setConferenceId(faker.number().randomDigit());
+        report.setConferenceId(faker.number().randomDigit() + 1);
         report.setName(faker.ancient().hero());
 
         return report;

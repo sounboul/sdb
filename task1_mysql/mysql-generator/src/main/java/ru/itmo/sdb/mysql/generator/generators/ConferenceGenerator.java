@@ -22,7 +22,7 @@ public class ConferenceGenerator implements Generator<ConferenceEntity> {
     public ConferenceEntity generate() {
         final ConferenceEntity conference = new ConferenceEntity();
 
-        conference.setCityId(faker.number().randomDigit());
+        conference.setCityId(faker.number().randomDigit() + 1);
         conference.setName(faker.company().name());
 
         DateAndTime rootDate = faker.date();

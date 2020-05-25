@@ -31,7 +31,7 @@ public class ProjectParticipantGenerator implements Generator<ProjectParticipant
         projectParticipant.setFinishDate(new Date(faker.date().between(
                 projectParticipant.getStartDate(), faker.date().future(360, TimeUnit.DAYS)
         ).getTime()));
-        projectParticipant.setPersonId(faker.number().randomDigit());
+        projectParticipant.setPersonId(faker.number().randomDigit() + 1);
         projectParticipant.setRole(roles.get(new Random().nextInt(roles.size())));
 
         return projectParticipant;

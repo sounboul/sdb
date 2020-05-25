@@ -18,8 +18,8 @@ public class ReportAuthorGenerator implements Generator<ReportAuthorsEntity> {
     public ReportAuthorsEntity generate() {
         final ReportAuthorsEntity reportAuthors = new ReportAuthorsEntity();
 
-        reportAuthors.setPersonId(faker.number().randomDigit());
-        reportAuthors.setReportId(faker.number().randomDigit());
+        reportAuthors.setPersonId(faker.number().randomDigit() + 1);
+        reportAuthors.setReportId(faker.number().randomDigit() + 1);
 
         return reportAuthors;
     }

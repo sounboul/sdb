@@ -20,7 +20,7 @@ public class PublicationGenerator implements Generator<PublicationEntity> {
         final PublicationEntity publication = new PublicationEntity();
 
         publication.setCitationIndex(faker.number().randomDouble(2, 0, 50));
-        publication.setEditionId(faker.number().randomDigit());
+        publication.setEditionId(faker.number().randomDigit() + 1);
         publication.setName(faker.book().title());
         publication.setPublicationDate(
                 new java.sql.Date(faker.date().past(15 * 360, TimeUnit.DAYS).getTime())

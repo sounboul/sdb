@@ -66,7 +66,13 @@ public class MongoDataGenerator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        final List<Dormitory> dormitories = IntStream.rangeClosed(1, 3).boxed()
+        dormsRepository.deleteAll();
+        roomsRepository.deleteAll();
+        tenantsRepository.deleteAll();
+        visitsRepository.deleteAll();
+        penaltiesRepository.deleteAll();
+
+        final List<Dormitory> dormitories = IntStream.rangeClosed(1, 20).boxed()
                 .map(x -> dormitoryGenerator.generate()).collect(Collectors.toList());
 
         final List<Room> rooms = dormitories.stream()

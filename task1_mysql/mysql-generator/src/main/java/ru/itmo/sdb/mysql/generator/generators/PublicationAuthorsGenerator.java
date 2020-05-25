@@ -18,8 +18,8 @@ public class PublicationAuthorsGenerator implements Generator<PublicationAuthors
     public PublicationAuthorsEntity generate() {
         PublicationAuthorsEntity publicationAuthors = new PublicationAuthorsEntity();
 
-        publicationAuthors.setPersonId(faker.number().randomDigit());
-        publicationAuthors.setPublicationId(faker.number().randomDigit());
+        publicationAuthors.setPersonId(faker.number().randomDigit() + 1);
+        publicationAuthors.setPublicationId(faker.number().randomDigit() + 1);
 
         return publicationAuthors;
     }

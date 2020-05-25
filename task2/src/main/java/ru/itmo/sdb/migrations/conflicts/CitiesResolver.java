@@ -1,5 +1,7 @@
 package ru.itmo.sdb.migrations.conflicts;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.itmo.sdb.migrations.conflicts.meta.MigrationReport;
 import ru.itmo.sdb.models.City;
 import ru.itmo.sdb.models.Conference;
@@ -15,9 +17,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+@Service
 public class CitiesResolver implements ConflictResolver {
     private StoreRepositoryHelper storeRepositoryHelper;
 
+    @Autowired
     public CitiesResolver(StoreRepositoryHelper storeRepositoryHelper) {
         this.storeRepositoryHelper = storeRepositoryHelper;
     }
