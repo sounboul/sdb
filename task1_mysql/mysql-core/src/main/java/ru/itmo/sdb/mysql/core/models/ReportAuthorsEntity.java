@@ -5,59 +5,39 @@ import javax.persistence.*;
 @Entity
 @Table(name = "report_authors", schema = "itmo_db", catalog = "")
 public class ReportAuthorsEntity {
-    private Integer personId;
-    private Integer reportId;
+    private long personId;
+    private long reportId;
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    private Integer id;
+    private long id;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
     @Basic
     @Column(name = "person_id", nullable = true)
-    public Integer getPersonId() {
+    public long getPersonId() {
         return personId;
     }
 
-    public void setPersonId(Integer personId) {
+    public void setPersonId(long personId) {
         this.personId = personId;
     }
 
     @Basic
     @Column(name = "report_id", nullable = true)
-    public Integer getReportId() {
+    public long getReportId() {
         return reportId;
     }
 
-    public void setReportId(Integer reportId) {
+    public void setReportId(long reportId) {
         this.reportId = reportId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ReportAuthorsEntity that = (ReportAuthorsEntity) o;
-
-        if (personId != null ? !personId.equals(that.personId) : that.personId != null) return false;
-        if (reportId != null ? !reportId.equals(that.reportId) : that.reportId != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = personId != null ? personId.hashCode() : 0;
-        result = 31 * result + (reportId != null ? reportId.hashCode() : 0);
-        return result;
     }
 }

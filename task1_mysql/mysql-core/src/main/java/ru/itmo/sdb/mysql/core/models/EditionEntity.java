@@ -5,22 +5,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "edition", schema = "itmo_db", catalog = "")
 public class EditionEntity {
-    private int id;
+    private long id;
     private String name;
     private Integer volume;
     private String type;
     private Integer year;
-    private Integer cityId;
+    private long cityId;
     private String language;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -66,11 +66,11 @@ public class EditionEntity {
 
     @Basic
     @Column(name = "city_id", nullable = true)
-    public Integer getCityId() {
+    public long getCityId() {
         return cityId;
     }
 
-    public void setCityId(Integer cityId) {
+    public void setCityId(long cityId) {
         this.cityId = cityId;
     }
 
@@ -82,35 +82,5 @@ public class EditionEntity {
 
     public void setLanguage(String language) {
         this.language = language;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        EditionEntity that = (EditionEntity) o;
-
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (volume != null ? !volume.equals(that.volume) : that.volume != null) return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
-        if (year != null ? !year.equals(that.year) : that.year != null) return false;
-        if (cityId != null ? !cityId.equals(that.cityId) : that.cityId != null) return false;
-        if (language != null ? !language.equals(that.language) : that.language != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (volume != null ? volume.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (year != null ? year.hashCode() : 0);
-        result = 31 * result + (cityId != null ? cityId.hashCode() : 0);
-        result = 31 * result + (language != null ? language.hashCode() : 0);
-        return result;
     }
 }
