@@ -95,7 +95,7 @@ public class DataGeneratorService {
                         .boxed()
                         .map(x -> projectParticipantGenerator.generate())
                 .collect(Collectors.toList());
-        List<PublicationEntity> publications = IntStream.rangeClosed(0, defaultSize)
+        List<PublicationEntity> publications = IntStream.rangeClosed(0, defaultSize * 50)
                         .mapToObj(x -> publicationGenerator.generate())
                 .collect(Collectors.toList());
         List<PublicationAuthorsEntity> publicationAuthors = IntStream.rangeClosed(1, defaultSize)
