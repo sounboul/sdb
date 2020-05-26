@@ -29,6 +29,8 @@ public class BookBorrowGenerator implements Generator<BookBorrowEntity> {
         bookBorrow.setReturnDate(
                 new Date(faker.date().future(100, TimeUnit.DAYS).getTime())
         );
+        bookBorrow.setBookId(faker.number().randomDigit());
+        bookBorrow.setOwnerId(faker.number().randomDigit());
 
         return bookBorrow;
     }
