@@ -1,0 +1,102 @@
+drop table birthplaces;
+drop table publishers;
+drop function to_term;
+drop table fact_2;
+drop table fact_3;
+
+create table birthplaces (
+ id NUMBER(8) GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+ district VARCHAR2(255),
+ city VARCHAR2(255) NOT NULL,
+ country VARCHAR2(255) NOT NULL
+);
+
+create table publishers (
+ id NUMBER(8) GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+ publisher VARCHAR2(255) NOT NULL,
+ city VARCHAR2(255) NOT NULL,
+ country VARCHAR2(255) NOT NULL
+);
+
+create function to_term(dt IN DATE)
+ RETURN NUMBER
+ IS
+ BEGIN
+  IF EXTRACT(MONTH FROM dt) < 2 THEN
+   RETURN(1);
+  END IF;
+  IF EXTRACT(MONTH FROM dt) > 8 THEN
+   RETURN(1);
+  END IF;
+  RETURN(2);
+ END;
+
+INSERT INTO birthplaces (city, country)
+SELECT DISTINCT city.name, 'Russia' FROM person JOIN city ON person.city_id=city.id
+WHERE city.name = 'Moscow' or city.name = 'Boston';
+
+INSERT INTO birthplaces (city, country)
+SELECT DISTINCT city.name, 'USA' FROM person JOIN city ON person.city_id=city.id
+WHERE city.name = 'New York' or city.name = 'San Jose' or city.name = 'Kemerovo';
+
+INSERT INTO birthplaces (city, country)
+SELECT DISTINCT city.name, 'UK' FROM person JOIN city ON person.city_id=city.id
+WHERE city.name = 'London' or city.name = 'Tashkent';
+
+INSERT INTO publishers (publisher, city, country)
+SELECT DISTINCT edition.name, city.name, 'Russia' FROM edition JOIN city ON edition.city_id=city.id
+WHERE city.name = 'Moscow' or city.name = 'Boston';
+
+INSERT INTO publishers (publisher, city, country)
+SELECT DISTINCT edition.name, city.name, 'USA' FROM edition JOIN city ON edition.city_id=city.id
+WHERE city.name = 'New York' or city.name = 'San Jose' or city.name = 'Kemerovo';
+
+INSERT INTO publishers (publisher, city, country)
+SELECT DISTINCT edition.name, city.name, 'UK' FROM edition JOIN city ON edition.city_id=city.id
+WHERE city.name = 'London' or city.name = 'Tashkent';
+
+create table fact_2 (
+    id NUMBER(8) GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    countOfPeople NUMBER(8),
+    birthplaceId NUMBER(8),
+    timeId NUMBER(8),
+    CONSTRAINT fk_birthplaceId
+        FOREIGN KEY (birthplaceId)
+        REFERENCES birthplaces(id),
+    CONSTRAINT fk_timeId
+        FOREIGN KEY (timeId)
+        REFERENCES xtime(id)
+);
+
+create table fact_3 (
+    id NUMBER(8) GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    countOfPeople NUMBER(8),
+    publisherId NUMBER(8),
+    timeId NUMBER(8),
+    CONSTRAINT fk_publisherId
+        FOREIGN KEY (publisherId)
+        REFERENCES publishers(id),
+    CONSTRAINT fk3_timeId
+        FOREIGN KEY (timeId)
+        REFERENCES xtime(id)
+);
+
+INSERT INTO fact_2 (countOfPeople, birthplaceId, timeId)
+SELECT /*+NO_QUERY_TRANSFORMATION*/ a, b, c
+FROM (
+    SELECT COUNT(CONCAT(birthplaces.id, xtime.id)) as a, birthplaces.id as b, xtime.id as c FROM PERSON
+    JOIN xtime ON xtime.year = EXTRACT(YEAR from person.birth_date) AND xtime.term = TO_TERM(person.birth_date)
+    JOIN city on person.city_id = city.id
+    JOIN birthplaces on city.name = birthplaces.city
+    GROUP BY birthplaces.id, xtime.id
+) BR;
+
+INSERT INTO fact_3 (countOfPeople, publisherId, timeId)
+SELECT /*+NO_QUERY_TRANSFORMATION*/ a, b, c
+FROM (
+    SELECT COUNT(CONCAT(publishers.id, xtime.id)) as a, publishers.id as b, xtime.id as c FROM PUBLICATION
+    JOIN edition ON edition_id = edition.id
+    JOIN publishers ON edition.name = publishers.publisher
+    JOIN xtime ON xtime.year = EXTRACT(YEAR from publication_date) AND xtime.term = TO_TERM(publication_date)
+    GROUP BY publishers.id, xtime.id
+) BR;
